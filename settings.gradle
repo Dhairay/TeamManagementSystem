@@ -1,0 +1,6 @@
+rootProject.name = 'tms'
+include 'team-management'
+include 'project-management'
+include 'sprint-management'
+include 'task-management'
+
