@@ -1,0 +1,42 @@
+server:
+  port: 9095
+
+spring:
+  application:
+    name: API-GATEWAY
+  profiles:
+    active: default
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: PROJECT-MANAGEMENT
+          uri: lb://PROJECT-MANAGEMENT
+          predicates:
+            - Path=/api/project/**
+
+        - id: SPRINT-MANAGEMENT
+          uri: lb://SPRINT-MANAGEMENT
+          predicates:
+            - Path=/api/sprint/**
+
+        - id: TASK-MANAGEMENT
+          uri: lb://TASK-MANAGEMENT
+          predicates:
+            - Path=/api/task/**
+
+        - id: TEAM-MANAGEMENT
+          uri: lb://TEAM-MANAGEMENT
+          predicates:
+            - Path=/api/teams/**
+
+eureka:
+  instance:
+    prefer-id-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    server-url:
+      defaultZone: http://localhost:8761/eureka

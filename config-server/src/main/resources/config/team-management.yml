@@ -1,0 +1,38 @@
+server:
+  port: 9091
+
+spring:
+  application:
+    name: TEAM-MANAGEMENT
+  datasource:
+    url: jdbc:mysql://localhost:3306/team_management_system
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    testWhileIdle: true
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        #create , update , create drop , validator
+        ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-client: true
+    server-url:
+      defaultZone: http://localhost:8761/eureka
+
+springdoc:
+  swagger-ui:
+    path: /api-docs
+    tagsSorter: alpha
+  api-docs:
+    path: "/api-docs"
+    groups:
+      enabled: true
