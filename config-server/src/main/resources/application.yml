@@ -1,0 +1,27 @@
+server:
+  port:
+    8888
+
+spring:
+  profiles:
+    active: native
+  security:
+    user:
+      name: admin
+      password: admin
+  application:
+    name: config-server
+
+eureka:
+  instance:
+    hostname: configserver
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${EUREKA_SERVER:localhost}:8761/eureka/
+
+management:
+  security:
+    enabled: false
